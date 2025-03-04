@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { api } from "../lib/axios";
 import { Description } from "@radix-ui/react-dialog";
+import { createContext } from "use-context-selector";
 
 interface Transaction {
   id: number;
