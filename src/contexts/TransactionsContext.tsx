@@ -36,10 +36,9 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const [transactions, setTransactions] = useState<Transaction>([]);
 
   async function fetchTransactions(query?: string) {
-    console.log(query);
     const response = await api.get("transactions", {
       params: {
-        description: query,
+        query: query,
       },
     });
     setTransactions(response.data);
