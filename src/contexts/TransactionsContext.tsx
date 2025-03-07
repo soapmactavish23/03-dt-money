@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ReactNode, useEffect, useState } from "react";
 import { api } from "../lib/axios";
-import { Description } from "@radix-ui/react-dialog";
 import { createContext } from "use-context-selector";
 
 interface Transaction {
@@ -10,7 +9,7 @@ interface Transaction {
   type: "income" | "outcome";
   price: number;
   category: string;
-  date: string;
+  createdAt: Date;
 }
 
 interface CreateTransactionInput {
@@ -33,7 +32,7 @@ interface TransactionsProviderProps {
 export const TransactionsContext = createContext({} as TransactionContextType);
 
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
-  const [transactions, setTransactions] = useState<Transaction>([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   async function fetchTransactions(query?: string) {
     const response = await api.get("transactions", {
